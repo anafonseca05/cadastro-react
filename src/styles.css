@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem;
+}
+
+body {
+    background-color: #e2dede; /* Tom de bege claro */
+    color: #b1a9a9; /* Cor do texto para contraste */
+    font-family: 'Poppins', sans-serif; /* Aplicando a fonte Poppins */
+}
+
+#container {
+    background-color: #FB0268; /* Rosa claro */
+    color: #ffffff; /* Cor do texto para contraste */
+    font-size: 1.2rem; /* Aumenta o tamanho da fonte para todo o conteúdo da div */
+    font-family: 'Poppins', sans-serif; /* Aplicando a fonte Poppins */
+}
+
+#container h2 {
+    font-size: 2rem; /* Tamanho específico para o h2 */
+}
+
+button {
+    font-family: 'Poppins', sans-serif; /* Aplicando a fonte Poppins aos botões */
+}
+
+label {
+    font-family: 'Poppins', sans-serif; /* Aplicando a fonte Poppins aos rótulos */
+}
+
+input {
+    font-family: 'Poppins', sans-serif; /* Aplicando a fonte Poppins aos campos de entrada */
+}
+
+#global-list-container,
+#list-teams,
+.cards,
+.cards-unique,
+.actions {
+    font-family: 'Poppins', sans-serif; /* Aplicando a fonte Poppins a outros elementos */
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    margin: 7rem;
+    padding: 0.25rem;
+    gap: 0.5rem;
+    border-radius: 0.3rem;
+    box-shadow: -12px 10px 24px 2px rgba(0,0,0,0.26);
+}
+
+label {
+    margin: 0.2rem;
+}
+
+input {
+    width: 45vw;
+    height: 5vh;
+    border: none;
+    border-radius: 0.2rem;
+    background-color: #e6e6e6;
+    padding-left: 0.5rem;
+}
+
+button {
+    background-color: #048cce;
+    border-radius: 0.3rem;
+    width: 50%;
+    height: 5vh;
+    border: none;
+    color: #fff;
+}
+
+#global-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem;
+    padding: 0.5rem;
+    border: 2px solid #e6e6e6;
+    border-radius: 0.2rem;
+    width: 50%;
+}
+
+#list-teams {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem;
+    padding: 0.5rem;
+    border: 2px solid #e6e6e6;
+    border-radius: 0.2rem;
+    width: 80%;
+    height: 30vh;
+    overflow-y: auto;
+    gap: 1rem;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    border: 0.5px solid #151515;
+    border-radius: 0.2rem;
+}
+
+.cards-unique {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+    border: 0.5px solid #151515;
+    border-radius: 0.2rem;
+    text-align: start;
+}
+
+#actions-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.actions {
+    margin: 0.3rem;
+    background-color: #e6e6e6;
+    border-radius: 0.3rem;
+    width: 25vw;
+    height: 5vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+header {
+    background-color: #FB0268;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0px 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 10000;
+}
+
+header .logo {
+    max-width: 60%; /* Ajuste este valor conforme necessário */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+header ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    list-style: none;
+    display: flex;
+    margin-left: 10px;
+}
+
+header ul li a {
+    display: inline-block;
+    color: var(--black);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar a {
+    font-size: 1rem;
+    padding: 11px 20px;
+    color: var(--second-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #FFf;
+}
+
+.navbar a:hover {
+    color: var(--main-color);
+    color: #000000;
+}
