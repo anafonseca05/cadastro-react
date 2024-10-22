@@ -19,22 +19,19 @@ function App() {
 
             <main>
                 <div id="container">
-                    <h2>Cadastro de Equipes</h2>
+                    <h2>Cadastro de Projetos</h2>
                     <label htmlFor="team">
-                        <p>Nome da Equipe</p>
-                        <input type="text" name="team" id="team" placeholder="Nome da Equipe" />
+                        <p>Nome da Projeto</p>
+                        <input type="text" name="team" id="team" placeholder="Nome do Projeto" />
                     </label>
                     <label htmlFor="members">
                         <p>Nome dos Integrantes</p>
-                        <input type="text" name="members" id="members" placeholder="Nome dos Integrantes da Equipe" />
+                        <input type="text" name="members" id="members" placeholder="Nome dos Integrantes do Projeto" />
                     </label>
-                    <label htmlFor="rms">
-                        <p>RM dos Integrantes</p>
-                        <input type="text" name="rms" id="rms" placeholder="RM dos Integrantes da Equipe" />
-                    </label>
+                    
                     <label htmlFor="theme">
-                        <p>Tema da Equipe</p>
-                        <input type="text" name="theme" id="theme" placeholder="Tema da Equipe" />
+                        <p>Proposta</p>
+                        <input type="text" name="theme" id="theme" placeholder="Proposta" />
                     </label>
 
                     <button id="button-register" onClick={() => { /* Função para cadastrar */ }}>Cadastrar</button>
