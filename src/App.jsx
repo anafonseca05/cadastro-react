@@ -12,6 +12,7 @@ function App() {
   });
   const [editIndex, setEditIndex] = useState(null);
 
+<<<<<<< HEAD
   // Função para carregar os dados existentes do backend
   useEffect(() => {
     const fetchTeams = async () => {
@@ -24,6 +25,24 @@ function App() {
     };
     fetchTeams();
   }, []);
+=======
+            <main>
+                <div id="container">
+                    <h2>Cadastro de Projetos</h2>
+                    <label htmlFor="team">
+                        <p>Nome da Projeto</p>
+                        <input type="text" name="team" id="team" placeholder="Nome do Projeto" />
+                    </label>
+                    <label htmlFor="members">
+                        <p>Nome dos Integrantes</p>
+                        <input type="text" name="members" id="members" placeholder="Nome dos Integrantes do Projeto" />
+                    </label>
+                    
+                    <label htmlFor="theme">
+                        <p>Proposta</p>
+                        <input type="text" name="theme" id="theme" placeholder="Proposta" />
+                    </label>
+>>>>>>> 467d62f044e147792ee15aeeadcfbe1afd8e8320
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
