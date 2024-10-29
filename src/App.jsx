@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './styles.css'; // Importar CSS
 
 function App() {
-  // Estado para armazenar as equipes
   const [teams, setTeams] = useState([]);
   const [teamData, setTeamData] = useState({
     name: '',
@@ -10,26 +9,31 @@ function App() {
     rms: '',
     theme: ''
   });
-
   const [editIndex, setEditIndex] = useState(null);
 
-  // Função para lidar com alterações no formulário
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setTeamData({ ...teamData, [name]: value });
   };
 
-  // Função para cadastrar ou atualizar uma equipe
   const handleRegister = () => {
+    // Verifica se todos os campos estão preenchidos
+    if (!teamData.name || !teamData.members || !teamData.rms || !teamData.theme) {
+      alert('Por favor, preencha todos os campos!');
+      return;
+    }
+
     if (editIndex === null) {
       // Criar nova equipe
       setTeams([...teams, teamData]);
+      alert('Projeto Cadastrado com Sucesso');
     } else {
       // Editar equipe existente
       const updatedTeams = [...teams];
       updatedTeams[editIndex] = teamData;
       setTeams(updatedTeams);
       setEditIndex(null); // Resetar o estado de edição
+      alert('Projeto Atualizado com Sucesso');
     }
 
     // Limpar o formulário
@@ -41,13 +45,11 @@ function App() {
     });
   };
 
-  // Função para editar uma equipe
   const handleEdit = (index) => {
     setTeamData(teams[index]);
     setEditIndex(index);
   };
 
-  // Função para deletar uma equipe
   const handleDelete = (index) => {
     const filteredTeams = teams.filter((_, i) => i !== index);
     setTeams(filteredTeams);
@@ -61,8 +63,6 @@ function App() {
         <ul className="navbar">
           <li><a href="#home">HOME</a></li>
           <li><a href="#shop">AVALIAÇÕES</a></li>
-        
-    
           <li><a href="#app">CADASTRO PROJETO</a></li>
         </ul>
       </header>
