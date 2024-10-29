@@ -61,24 +61,23 @@ function App() {
         <ul className="navbar">
           <li><a href="#home">HOME</a></li>
           <li><a href="#shop">AVALIAÇÕES</a></li>
-          <li><a href="#delivery">TEMAS</a></li>
-          <li><a href="#about">SOBRE NÓS</a></li>
-          <li><a href="#contact">CADASTRO GRUPO</a></li>
+        
+    
           <li><a href="#app">CADASTRO PROJETO</a></li>
         </ul>
       </header>
 
       <main>
         <div id="container">
-          <h2>Cadastro de Equipes</h2>
+          <h2>Cadastro de Projeto</h2>
           <label htmlFor="name">
-            <p>Nome da Equipe</p>
+            <p>Nome do Projeto</p>
             <input
               type="text"
               name="name"
               value={teamData.name}
               onChange={handleInputChange}
-              placeholder="Nome da Equipe"
+              placeholder="Nome do Projeto"
             />
           </label>
           <label htmlFor="members">
@@ -88,7 +87,7 @@ function App() {
               name="members"
               value={teamData.members}
               onChange={handleInputChange}
-              placeholder="Nome dos Integrantes da Equipe"
+              placeholder="Nome dos Integrantes do Projeto"
             />
           </label>
           <label htmlFor="rms">
@@ -98,17 +97,17 @@ function App() {
               name="rms"
               value={teamData.rms}
               onChange={handleInputChange}
-              placeholder="RM dos Integrantes da Equipe"
+              placeholder="RM dos Integrantes do Projeto"
             />
           </label>
           <label htmlFor="theme">
-            <p>Tema da Equipe</p>
+            <p>Tema do Projeto</p>
             <input
               type="text"
               name="theme"
               value={teamData.theme}
               onChange={handleInputChange}
-              placeholder="Tema da Equipe"
+              placeholder="Tema do Projeto"
             />
           </label>
 
@@ -117,11 +116,11 @@ function App() {
           </button>
 
           <div className="team-list">
-            <h3>Equipes Cadastradas</h3>
+            <h3>Projetos Cadastrados</h3>
             <ul>
               {teams.map((team, index) => (
                 <li key={index}>
-                  <p><strong>Equipe:</strong> {team.name}</p>
+                  <p><strong>Projeto:</strong> {team.name}</p>
                   <p><strong>Integrantes:</strong> {team.members}</p>
                   <p><strong>RMs:</strong> {team.rms}</p>
                   <p><strong>Tema:</strong> {team.theme}</p>
