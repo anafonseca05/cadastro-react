@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import './styles.css'; // Importar CSS
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './styles.css';
 
 function App() {
   const [teams, setTeams] = useState([]);
@@ -11,38 +12,49 @@ function App() {
   });
   const [editIndex, setEditIndex] = useState(null);
 
+  // Função para carregar os dados existentes do backend
+  useEffect(() => {
+    const fetchTeams = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/projeto');
+        setTeams(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar projetos:", error);
+      }
+    };
+    fetchTeams();
+  }, []);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setTeamData({ ...teamData, [name]: value });
   };
 
-  const handleRegister = () => {
-    // Verifica se todos os campos estão preenchidos
+  const handleRegister = async () => {
     if (!teamData.name || !teamData.members || !teamData.rms || !teamData.theme) {
       alert('Por favor, preencha todos os campos!');
       return;
     }
 
-    if (editIndex === null) {
-      // Criar nova equipe
-      setTeams([...teams, teamData]);
-      alert('Projeto Cadastrado com Sucesso');
-    } else {
-      // Editar equipe existente
-      const updatedTeams = [...teams];
-      updatedTeams[editIndex] = teamData;
-      setTeams(updatedTeams);
-      setEditIndex(null); // Resetar o estado de edição
-      alert('Projeto Atualizado com Sucesso');
+    try {
+      if (editIndex === null) {
+        // Criar novo projeto
+        const response = await axios.post('http://localhost:8080/projeto', teamData);
+        setTeams([...teams, response.data]);
+        alert('Projeto Cadastrado com Sucesso');
+      } else {
+        // Atualizar projeto existente
+        const response = await axios.put(`http://localhost:8080/projeto/${teamData.rms}`, teamData);
+        const updatedTeams = [...teams];
+        updatedTeams[editIndex] = response.data;
+        setTeams(updatedTeams);
+        setEditIndex(null);
+        alert('Projeto Atualizado com Sucesso');
+      }
+      setTeamData({ name: '', members: '', rms: '', theme: '' });
+    } catch (error) {
+      console.error("Erro ao cadastrar/atualizar projeto:", error);
     }
-
-    // Limpar o formulário
-    setTeamData({
-      name: '',
-      members: '',
-      rms: '',
-      theme: ''
-    });
   };
 
   const handleEdit = (index) => {
@@ -50,9 +62,15 @@ function App() {
     setEditIndex(index);
   };
 
-  const handleDelete = (index) => {
-    const filteredTeams = teams.filter((_, i) => i !== index);
-    setTeams(filteredTeams);
+  const handleDelete = async (index) => {
+    try {
+      const id = teams[index].rms;
+      await axios.delete(`http://localhost:8080/projeto/${id}`);
+      setTeams(teams.filter((_, i) => i !== index));
+      alert('Projeto Excluído com Sucesso');
+    } catch (error) {
+      console.error("Erro ao excluir projeto:", error);
+    }
   };
 
   return (
@@ -70,6 +88,18 @@ function App() {
       <main>
         <div id="container">
           <h2>Cadastro de Projeto</h2>
+
+          <label htmlFor="rms">
+            <p>ID</p>
+            <input
+              type="number"
+              name="rms"
+              value={teamData.rms}
+              onChange={handleInputChange}
+              placeholder="ID"
+            />
+          </label>
+
           <label htmlFor="name">
             <p>Nome do Projeto</p>
             <input
@@ -80,6 +110,7 @@ function App() {
               placeholder="Nome do Projeto"
             />
           </label>
+
           <label htmlFor="members">
             <p>Nome dos Integrantes</p>
             <input
@@ -90,24 +121,15 @@ function App() {
               placeholder="Nome dos Integrantes do Projeto"
             />
           </label>
-          <label htmlFor="rms">
-            <p>RM dos Integrantes</p>
-            <input
-              type="text"
-              name="rms"
-              value={teamData.rms}
-              onChange={handleInputChange}
-              placeholder="RM dos Integrantes do Projeto"
-            />
-          </label>
+
           <label htmlFor="theme">
-            <p>Tema do Projeto</p>
+            <p>Proposta</p>
             <input
               type="text"
               name="theme"
               value={teamData.theme}
               onChange={handleInputChange}
-              placeholder="Tema do Projeto"
+              placeholder="Proposta"
             />
           </label>
 
